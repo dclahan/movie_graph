@@ -61,7 +61,7 @@ def pl_ex_coef(degrees, order):
 with open('save_vars_weighted.pickle', 'rb') as f:
 	G = pickle.load(f)
 
-# G = initializeG()
+# G = initializeG() # UNCOMMENT TO CREATE/PICKLE THE GRAPH
 
 # nx.write_graphml(G, 'wmovs.graphml')
 
@@ -82,19 +82,16 @@ for n in G.nodes():
 	else:
 		degs[d]+=1
 
-# sorteddegs = sorted(degs.items())
-# # print(sorteddegs[:5])
-# fig = plt.figure()
-# ax = fig.add_subplot(111)
-# ax.plot([k for (k,v) in sorteddegs], [v for (k, v) in sorteddegs], 'b')
-# ax.set_xscale('log')
-# ax.set_yscale('log')
-# ax.set_xlabel('degree')
-# ax.set_ylabel('frequency')
-# plt.show()
+sorteddegs = sorted(degs.items())
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot([k for (k,v) in sorteddegs], [v for (k, v) in sorteddegs], 'b')
+ax.set_xscale('log')
+ax.set_yscale('log')
+ax.set_xlabel('degree')
+ax.set_ylabel('frequency')
+plt.show()
 
-# print(0,degs[0])
-# print(1,degs[1])
 
 pl_exp, pl_coefficient = pl_ex_coef(degs,G.order())
 print(pl_exp)
