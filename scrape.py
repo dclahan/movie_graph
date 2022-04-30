@@ -290,16 +290,16 @@ print("Size of largest connected comp: ", len(largest_CC))
 # draw_genres(personal, genre_groups)
 
 ## assess centralities (closeness is hard if lots edges and weight accessing)
-# print_close(personal)
-# print_deg(personal)
+print_close(personal)
+print_deg(personal)
 
 #########################################################################################################
 
 ## find breakdown of genres/years
-# print_genre_bd(personal.nodes(),ID_title_dict)
-# print_year_bd(personal.nodes(),ID_title_dict, decades= False)
-# print_year_bd(personal.nodes(),ID_title_dict, decades= True) 
-# print_director_bd(personal.nodes(), ID_title_dict)
+print_genre_bd(personal.nodes(),ID_title_dict)
+print_year_bd(personal.nodes(),ID_title_dict, decades= False)
+print_year_bd(personal.nodes(),ID_title_dict, decades= True) 
+print_director_bd(personal.nodes(), ID_title_dict)
 
 #########################################################################################################
 
@@ -307,31 +307,31 @@ print("Size of largest connected comp: ", len(largest_CC))
 
 Cl, comm_nodes_deg = deg_label_prop_printer(BCC, ID_title_dict)
 
-# Cw = label_prop_weighted(BCC)
-# print('Weighted Label Prop:')
-# print('Edge cut    : ', edge_cut(BCC,Cw))
-# print('Conductance : ', conductance(BCC,Cw))
-# print('Modularity  : ', modularity(BCC, Cw))
+Cw = label_prop_weighted(BCC)
+print('Weighted Label Prop:')
+print('Edge cut    : ', edge_cut(BCC,Cw))
+print('Conductance : ', conductance(BCC,Cw))
+print('Modularity  : ', modularity(BCC, Cw))
 
-# unique_comms, comm_nodes = list(set([x for x in Cw.values()])), []
-# print("# communities: ", len(unique_comms))
-# for c in unique_comms:
-# 	tmp = []
-# 	for n in BCC.nodes():
-# 		if Cw[n] == c:
-# 			tmp.append(n)
-# 	comm_nodes.append(set(tmp))
-# comm_nodes = sorted(comm_nodes, key = lambda x: len(x), reverse = True)
-# print('size of largest community: ', len(comm_nodes[0]))
-# for i in range(1,len(comm_nodes)):
-# 	print(f"community of size {len(comm_nodes[i])}:")
-# 	for c in comm_nodes[i]:
-# 		print(ID_title_dict[str(c)], end = "  ")
-# 	print('\n')
-# 	# print_genre_bd(comm_nodes[i], ID_title_dict)
+unique_comms, comm_nodes = list(set([x for x in Cw.values()])), []
+print("# communities: ", len(unique_comms))
+for c in unique_comms:
+	tmp = []
+	for n in BCC.nodes():
+		if Cw[n] == c:
+			tmp.append(n)
+	comm_nodes.append(set(tmp))
+comm_nodes = sorted(comm_nodes, key = lambda x: len(x), reverse = True)
+print('size of largest community: ', len(comm_nodes[0]))
+for i in range(1,len(comm_nodes)):
+	print(f"community of size {len(comm_nodes[i])}:")
+	for c in comm_nodes[i]:
+		print(ID_title_dict[str(c)], end = "  ")
+	print('\n')
+	# print_genre_bd(comm_nodes[i], ID_title_dict)
 
-# draw_comm_graph(BCC, Cw)
-# draw_comm_graph(BCC, Cl)
+draw_comm_graph(BCC, Cw)
+draw_comm_graph(BCC, Cl)
 
 
 #########################################################################################################
@@ -343,65 +343,65 @@ Cl, comm_nodes_deg = deg_label_prop_printer(BCC, ID_title_dict)
 #########################################################################################################
 
 ## recommendation based on familiar actors
-# deg_recs = get_recs(personal,G,ID_title_dict)
-# print("\tDegree Centrality Recommendations:")
-# max_just = 35
-# adjust = max(deg_recs[:10], key = lambda x : len(str(ID_title_dict[str(x[0])])))
-# adjust = len(str(ID_title_dict[str(adjust[0])])) + 7
-# for i in range(10):
-# 	mov = ID_title_dict[str(deg_recs[i][0])]
-# 	tit_yr = str(mov) + " (" + str(mov.year) + ")"
-# 	print('{} : {}'.format(tit_yr.ljust(adjust),deg_recs[i][1]))
+deg_recs = get_recs(personal,G,ID_title_dict)
+print("\tDegree Centrality Recommendations:")
+max_just = 35
+adjust = max(deg_recs[:10], key = lambda x : len(str(ID_title_dict[str(x[0])])))
+adjust = len(str(ID_title_dict[str(adjust[0])])) + 7
+for i in range(10):
+	mov = ID_title_dict[str(deg_recs[i][0])]
+	tit_yr = str(mov) + " (" + str(mov.year) + ")"
+	print('{} : {}'.format(tit_yr.ljust(adjust),deg_recs[i][1]))
 
 
-# close_recs = get_recs(personal,G,ID_title_dict,rec_type='closeness')
-# print("\tCloseness Centrality Recommendations:")
-# adjust = max(deg_recs[:10], key = lambda x : len(str(ID_title_dict[str(x[0])])))
-# adjust = len(str(ID_title_dict[str(adjust[0])])) + 7
-# for i in range(10):
-# 	mov = ID_title_dict[str(close_recs[i][0])]
-# 	tit_yr = str(mov) + " (" + str(mov.year) + ")"
-# 	print('{} : {:.4f}'.format(tit_yr.ljust(adjust),close_recs[i][1]))
+close_recs = get_recs(personal,G,ID_title_dict,rec_type='closeness')
+print("\tCloseness Centrality Recommendations:")
+adjust = max(deg_recs[:10], key = lambda x : len(str(ID_title_dict[str(x[0])])))
+adjust = len(str(ID_title_dict[str(adjust[0])])) + 7
+for i in range(10):
+	mov = ID_title_dict[str(close_recs[i][0])]
+	tit_yr = str(mov) + " (" + str(mov.year) + ")"
+	print('{} : {:.4f}'.format(tit_yr.ljust(adjust),close_recs[i][1]))
 
 #########################################################################################################
 
 ## Franchize detection
-# heavy_edges = set()
-# tol = 6
-# for e in personal.edges():
-# 	if personal.get_edge_data(*e)['weight'] > tol:
-# 		heavy_edges = heavy_edges | {e}
-# heaviest = G.edge_subgraph(heavy_edges)
+heavy_edges = set()
+tol = 6
+for e in personal.edges():
+	if personal.get_edge_data(*e)['weight'] > tol:
+		heavy_edges = heavy_edges | {e}
+heaviest = G.edge_subgraph(heavy_edges)
 
-# heavy_CCs = sorted(list(nx.connected_components(heaviest)), reverse = True, key = lambda x:len(x))
-# heavy_largest_CC = heavy_CCs[0]
+heavy_CCs = sorted(list(nx.connected_components(heaviest)), reverse = True, key = lambda x:len(x))
+heavy_largest_CC = heavy_CCs[0]
 
-# print("Number of movies: ", heaviest.order())
-# print("Number of edges : ", heaviest.size())
-# print(f'Number of connected components: {len(heavy_CCs)}')
-# print("Size of largest connected comp: ", len(heavy_largest_CC))
+print("Number of movies: ", heaviest.order())
+print("Number of edges : ", heaviest.size())
+print(f'Number of connected components: {len(heavy_CCs)}')
+print("Size of largest connected comp: ", len(heavy_largest_CC))
 
-# i,draw_comms = 1,False
-# for cc in heavy_CCs:
-# 	print(f"{i}:", end = ' ')
-# 	for ID in cc:
-# 		print(ID_title_dict[str(ID)], end=" | ")
-# 	print()
-# 	if len(cc) > 4 and draw_comms:
-# 		cc_graph = heaviest.subgraph(cc)
-# 		comms = get_director_comms(cc_graph,ID_title_dict)
-# 		colors = [comms[v] for v in cc_graph.nodes()]
-# 		nx.draw(cc_graph, node_size = 30, node_color=colors)
-# 		plt.title(i)
-# 		plt.show()
-# 	i+=1
+i,draw_comms = 1,False
+for cc in heavy_CCs:
+	print(f"{i}:", end = ' ')
+	for ID in cc:
+		print(ID_title_dict[str(ID)], end=" | ")
+	print()
+	if len(cc) > 4 and draw_comms:
+		cc_graph = heaviest.subgraph(cc)
+		comms = get_director_comms(cc_graph,ID_title_dict)
+		colors = [comms[v] for v in cc_graph.nodes()]
+		nx.draw(cc_graph, node_size = 30, node_color=colors)
+		plt.title(i)
+		plt.show()
+	i+=1
 
-# draw_comms = True
-# if draw_comms:
-# 	comms = get_director_comms(heaviest,ID_title_dict)
-# 	colors = [comms[v] for v in heaviest.nodes()]
-# 	nx.draw(heaviest, node_size = 30, node_color=colors)
-# 	plt.show()
+draw_comms = True
+if draw_comms:
+	comms = get_director_comms(heaviest,ID_title_dict)
+	colors = [comms[v] for v in heaviest.nodes()]
+	nx.draw(heaviest, node_size = 30, node_color=colors)
+	plt.show()
 
 #########################################################################################################
 
