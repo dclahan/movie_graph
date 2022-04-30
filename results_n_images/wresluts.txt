@@ -1,0 +1,12 @@
+degree cent mov graph:
+[('The Player', 0.054705174488567994),
+ ('Unity', 0.05186522262334537),
+ ('Around the World in Eighty Days', 0.04837545126353791),
+ ("That's Entertainment!", 0.040962695547533096),
+ ('Mr. Smith Goes to Washington', 0.038026474127557164),
+ ('Union Pacific', 0.03687123947051745),
+ ("That's Entertainment! III", 0.035138387484957886),
+ ('Pearl Harbor', 0.033477737665463296),
+ ('They Died with Their Boots On', 0.032370637785800245),
+ ("You Can't Take It With You", 0.03200962695547533)]
+

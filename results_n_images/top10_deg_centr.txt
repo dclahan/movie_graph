@@ -1,0 +1,21 @@
+[('Bess Flowers', 0.0009765466056867565),
+ ('Christopher Lee', 0.0006022037401734998),
+ ('John Wayne', 0.0005086180237951857),
+ ('Samuel L. Jackson', 0.0005004801354144627),
+ ('Gérard Depardieu', 0.00044758386093976337),
+ ('Michael Caine', 0.00044758386093976337),
+ ('John Carradine', 0.0004435149167494019),
+ ('Jackie Chan', 0.0004394459725590404),
+ ('Donald Sutherland', 0.0004394459725590404),
+ ('Robert De Niro', 0.0004231701957975945)]
+
+[('Around the World in Eighty Days', 0.0012695105873927835),
+ ('Rock of Ages', 0.0009114434986409728),
+ ('Mr. Smith Goes to Washington', 0.0008666851125469964),
+ ('Les Misérables', 0.000846340391595189),
+ ('Jason Bourne', 0.000846340391595189),
+ ('Union Pacific', 0.0007486857310265133),
+ ("You Don't Mess with the Zohan", 0.0007446167868361518),
+ ('Real Steel', 0.0006998584007421755),
+ ('Mr. Deeds Goes to Town', 0.000695789456551814),
+ ('Star Trek', 0.0006835826239807296)]

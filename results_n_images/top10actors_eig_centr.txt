@@ -1,0 +1,21 @@
+[(0.13908540749450596, 'Bess Flowers'), 
+ (0.08412113938275188, 'Irving Bacon'), 
+ (0.07426404053536807, 'Ward Bond'), 
+ (0.06422180500374948, 'Jack Mower'), 
+ (0.06298649083849714, 'Bert Moorhouse'), 
+ (0.06089447955566954, 'James Flavin'), 
+ (0.05993141731943036, 'Charles Lane'), 
+ (0.058608779071808996, 'Milton Kibbee'), 
+ (0.058154087073090825, 'Gino Corrado'), 
+ (0.05682225390934871, 'Lee Phelps')]
+
+('Mr. Smith Goes to Washington', 0.14618310580861588), 
+('Mr. Deeds Goes to Town', 0.11388864012870822), 
+('Union Pacific', 0.111899219984072), 
+('The Roaring Twenties', 0.10726603742032483), 
+('Around the World in Eighty Days', 0.10200492772388334), 
+("You Can't Take It With You", 0.10164733028414503), 
+('City for Conquest', 0.08676734904243442), 
+('They Died with Their Boots On', 0.08297600159370128), 
+('The Grapes of Wrath', 0.07751975051335808), 
+('Castle on the Hudson', 0.07509745963886096)]
